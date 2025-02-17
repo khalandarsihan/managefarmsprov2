@@ -1,0 +1,203 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:plot_name",
+ "creation": "2025-02-17 14:25:46.756946",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "plot_details_section",
+  "plot_number",
+  "area",
+  "column_break_wjzz",
+  "plot_name",
+  "units",
+  "column_break_bnsq",
+  "cluster",
+  "plot_location",
+  "preferred_plot_name",
+  "budget_settings_section",
+  "monthly_maintenance_budget",
+  "column_break_sbgc",
+  "supervision_charges",
+  "this_months_spending_section",
+  "total_amount_spent",
+  "last_maintenance_reset",
+  "column_break_hdsh",
+  "maintenance_balance",
+  "hidden_section_section",
+  "full_name",
+  "column_break_zusq",
+  "cluster_name",
+  "works_tab",
+  "work_details_section",
+  "work_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "plot_details_section",
+   "fieldtype": "Section Break",
+   "label": "Plot Details"
+  },
+  {
+   "fieldname": "plot_number",
+   "fieldtype": "Int",
+   "label": "Plot Number"
+  },
+  {
+   "fieldname": "area",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Area",
+   "non_negative": 1,
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_wjzz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "plot_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Plot Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "units",
+   "fieldtype": "Select",
+   "label": "Unit(s)",
+   "options": "Sq.Ft\nCent\nAcre"
+  },
+  {
+   "fieldname": "column_break_bnsq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cluster",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Cluster",
+   "options": "Cluster",
+   "reqd": 1
+  },
+  {
+   "fieldname": "plot_location",
+   "fieldtype": "Data",
+   "label": "Plot Location"
+  },
+  {
+   "fieldname": "preferred_plot_name",
+   "fieldtype": "Data",
+   "label": "Preferred Plot Name"
+  },
+  {
+   "fieldname": "budget_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Budget Settings"
+  },
+  {
+   "fieldname": "monthly_maintenance_budget",
+   "fieldtype": "Currency",
+   "label": "Monthly Maintenance Budget"
+  },
+  {
+   "fieldname": "column_break_sbgc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Supervision charge in %",
+   "fieldname": "supervision_charges",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Supervision Charges",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "this_months_spending_section",
+   "fieldtype": "Section Break",
+   "label": "This Month's Spending"
+  },
+  {
+   "fieldname": "total_amount_spent",
+   "fieldtype": "Currency",
+   "label": "Total Amount Spent"
+  },
+  {
+   "fieldname": "last_maintenance_reset",
+   "fieldtype": "Date",
+   "label": "Last Maintenance Reset"
+  },
+  {
+   "fieldname": "column_break_hdsh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "maintenance_balance",
+   "fieldtype": "Currency",
+   "label": "Maintenance Balance"
+  },
+  {
+   "fieldname": "hidden_section_section",
+   "fieldtype": "Section Break",
+   "label": "Hidden Section"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "column_break_zusq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cluster_name",
+   "fieldtype": "Data",
+   "label": "Cluster Name"
+  },
+  {
+   "fieldname": "works_tab",
+   "fieldtype": "Tab Break",
+   "label": "Works"
+  },
+  {
+   "fieldname": "work_details_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "work_details",
+   "fieldtype": "Table",
+   "label": "Work Details",
+   "options": "Work Child"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-02-17 18:00:39.061001",
+ "modified_by": "Administrator",
+ "module": "ManageFarmsPro",
+ "name": "Plot",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

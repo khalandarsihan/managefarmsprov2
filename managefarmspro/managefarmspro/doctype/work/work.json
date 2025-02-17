@@ -1,0 +1,284 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:WORK-ID-{###}",
+ "creation": "2025-02-17 15:48:15.537804",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "plot",
+  "monthly_maintenance_budget",
+  "maintenance_balance",
+  "supervision_charges",
+  "work_name",
+  "work_date",
+  "customer",
+  "invoice_number",
+  "column_break_hbvf",
+  "work_description",
+  "total_cost",
+  "work_photos",
+  "pdf_invoice_link",
+  "amended_from",
+  "work_details_section",
+  "labor_required",
+  "equipment_required",
+  "material_required",
+  "column_break_ijtv",
+  "labor_count",
+  "equipment_count",
+  "number_of_material_units",
+  "column_break_pbfj",
+  "number_of_labor_units",
+  "number_of_equipment_units",
+  "material_unit",
+  "column_break_tuhr",
+  "labor_unit",
+  "equipment_unit",
+  "material_count",
+  "section_break_enaf",
+  "labor_table",
+  "section_break_mvcq",
+  "equipment_table",
+  "section_break_hsoy",
+  "material_table"
+ ],
+ "fields": [
+  {
+   "fieldname": "plot",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Plot",
+   "options": "Plot",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.plot",
+   "fetch_from": "plot.monthly_maintenance_budget",
+   "fieldname": "monthly_maintenance_budget",
+   "fieldtype": "Currency",
+   "label": "Monthly Maintenance Budget"
+  },
+  {
+   "depends_on": "eval:doc.plot",
+   "fetch_from": "plot.maintenance_balance",
+   "fieldname": "maintenance_balance",
+   "fieldtype": "Currency",
+   "label": "Maintenance Balance"
+  },
+  {
+   "fetch_from": "plot.supervision_charges",
+   "fieldname": "supervision_charges",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Supervision Charges (%)"
+  },
+  {
+   "fieldname": "work_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Work Name",
+   "options": "Work Item",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "work_date",
+   "fieldtype": "Date",
+   "label": "Work Date"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "invoice_number",
+   "fieldtype": "Link",
+   "label": "Invoice Number",
+   "options": "Sales Invoice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_hbvf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "work_description",
+   "fieldtype": "Small Text",
+   "label": "Work Description"
+  },
+  {
+   "fieldname": "total_cost",
+   "fieldtype": "Currency",
+   "label": "Total Cost",
+   "precision": "2"
+  },
+  {
+   "fieldname": "work_photos",
+   "fieldtype": "Attach Image",
+   "label": "Work Photos"
+  },
+  {
+   "bold": 1,
+   "fieldname": "pdf_invoice_link",
+   "fieldtype": "Data",
+   "label": "PDF Invoice Link",
+   "options": "URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Work",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "work_details_section",
+   "fieldtype": "Section Break",
+   "label": "Work Details"
+  },
+  {
+   "fieldname": "labor_required",
+   "fieldtype": "Link",
+   "label": "Labor Required",
+   "link_filters": "[[\"Item\",\"item_group\",\"=\",\"Labor\"]]",
+   "options": "Item"
+  },
+  {
+   "fieldname": "equipment_required",
+   "fieldtype": "Link",
+   "label": "Equipment Required",
+   "link_filters": "[[\"Item\",\"item_group\",\"=\",\"Equipment\"]]",
+   "options": "Item"
+  },
+  {
+   "fieldname": "material_required",
+   "fieldtype": "Link",
+   "label": "Material Required",
+   "link_filters": "[[\"Item\",\"item_group\",\"=\",\"Raw Material\"]]",
+   "options": "Item"
+  },
+  {
+   "fieldname": "column_break_ijtv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "labor_count",
+   "fieldtype": "Data",
+   "label": "Labor Count"
+  },
+  {
+   "fieldname": "equipment_count",
+   "fieldtype": "Data",
+   "label": "Equipment Count"
+  },
+  {
+   "fieldname": "material_count",
+   "fieldtype": "Data",
+   "label": "Material Count"
+  },
+  {
+   "fieldname": "number_of_material_units",
+   "fieldtype": "Float",
+   "label": "Number of Units",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_pbfj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "number_of_labor_units",
+   "fieldtype": "Float",
+   "label": "Number of Units",
+   "precision": "2"
+  },
+  {
+   "fieldname": "number_of_equipment_units",
+   "fieldtype": "Float",
+   "label": "Number of Units",
+   "precision": "2"
+  },
+  {
+   "fieldname": "material_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "column_break_tuhr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "labor_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "equipment_unit",
+   "fieldtype": "Data",
+   "label": "Unit"
+  },
+  {
+   "fieldname": "section_break_enaf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "labor_table",
+   "fieldtype": "Table",
+   "label": "Labor",
+   "options": "Labor Child"
+  },
+  {
+   "fieldname": "section_break_mvcq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "equipment_table",
+   "fieldtype": "Table",
+   "label": "Equipment",
+   "options": "Equipment Child"
+  },
+  {
+   "fieldname": "section_break_hsoy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "material_table",
+   "fieldtype": "Table",
+   "label": "Material",
+   "options": "Material Child"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-02-17 17:35:23.023331",
+ "modified_by": "Administrator",
+ "module": "ManageFarmsPro",
+ "name": "Work",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,77 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:LAB-{####}",
+ "creation": "2025-02-17 17:14:39.390388",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "labor_code",
+  "item_display_name",
+  "number_of_labor_units",
+  "labor_unit",
+  "unit_price",
+  "total_price"
+ ],
+ "fields": [
+  {
+   "fieldname": "labor_code",
+   "fieldtype": "Link",
+   "label": "Labor Code",
+   "options": "Item"
+  },
+  {
+   "fetch_from": "labor_code.item_name",
+   "fieldname": "item_display_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Labor Description"
+  },
+  {
+   "fieldname": "number_of_labor_units",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Quantity",
+   "precision": "2"
+  },
+  {
+   "fieldname": "unit_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Unit Price",
+   "precision": "2"
+  },
+  {
+   "fieldname": "total_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Total Price",
+   "precision": "2"
+  },
+  {
+   "fieldname": "labor_unit",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Unit"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-02-17 17:33:58.193339",
+ "modified_by": "Administrator",
+ "module": "ManageFarmsPro",
+ "name": "Labor Child",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

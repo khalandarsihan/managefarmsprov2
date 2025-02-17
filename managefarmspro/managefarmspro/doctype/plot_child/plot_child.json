@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:PLT-{####}",
+ "creation": "2025-02-17 18:03:46.315525",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "plot",
+  "plot_name",
+  "plot_area",
+  "units",
+  "cluster",
+  "column_break_dqii"
+ ],
+ "fields": [
+  {
+   "fieldname": "plot",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Plot",
+   "options": "Plot"
+  },
+  {
+   "fetch_from": "plot.plot_name",
+   "fieldname": "plot_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Plot Name"
+  },
+  {
+   "fetch_from": "plot.area",
+   "fieldname": "plot_area",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Plot Area"
+  },
+  {
+   "fieldname": "column_break_dqii",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "plot.units",
+   "fieldname": "units",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Unit(s)"
+  },
+  {
+   "fieldname": "cluster",
+   "fieldtype": "Link",
+   "label": "Cluster",
+   "options": "Cluster"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-02-17 18:13:44.419345",
+ "modified_by": "Administrator",
+ "module": "ManageFarmsPro",
+ "name": "Plot Child",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

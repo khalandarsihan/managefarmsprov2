@@ -1,0 +1,50 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:work_item_name",
+ "creation": "2025-02-17 16:03:08.168378",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "work_item_name",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "work_item_name",
+   "fieldtype": "Data",
+   "label": "Work Item Name",
+   "unique": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-02-17 16:03:55.692180",
+ "modified_by": "Administrator",
+ "module": "ManageFarmsPro",
+ "name": "Work Item",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
