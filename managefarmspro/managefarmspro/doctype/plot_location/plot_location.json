@@ -2,33 +2,29 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "field:work_item_name",
- "creation": "2025-02-17 16:03:08.168378",
+ "autoname": "field:plot_location",
+ "creation": "2025-02-18 20:23:03.456846",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "work_item_name",
-  "description"
+  "plot_location"
  ],
  "fields": [
   {
-   "fieldname": "work_item_name",
+   "fieldname": "plot_location",
    "fieldtype": "Data",
-   "label": "Work Item Name",
+   "in_list_view": 1,
+   "label": "Plot Location",
+   "reqd": 1,
    "unique": 1
-  },
-  {
-   "fieldname": "description",
-   "fieldtype": "Small Text",
-   "label": "Description"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-02-18 20:19:59.218767",
+ "modified": "2025-02-18 20:23:43.453361",
  "modified_by": "Administrator",
  "module": "ManageFarmsPro",
- "name": "Work Item",
+ "name": "Plot Location",
  "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [

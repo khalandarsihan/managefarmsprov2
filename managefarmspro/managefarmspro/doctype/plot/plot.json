@@ -9,6 +9,7 @@
   "plot_details_section",
   "plot_number",
   "area",
+  "customer_name",
   "column_break_wjzz",
   "plot_name",
   "units",
@@ -85,8 +86,9 @@
   },
   {
    "fieldname": "plot_location",
-   "fieldtype": "Data",
-   "label": "Plot Location"
+   "fieldtype": "Link",
+   "label": "Plot Location",
+   "options": "Plot Location"
   },
   {
    "fieldname": "preferred_plot_name",
@@ -124,11 +126,13 @@
   {
    "fieldname": "total_amount_spent",
    "fieldtype": "Currency",
-   "label": "Total Amount Spent"
+   "label": "Total Amount Spent",
+   "read_only": 1
   },
   {
    "fieldname": "last_maintenance_reset",
    "fieldtype": "Date",
+   "hidden": 1,
    "label": "Last Maintenance Reset"
   },
   {
@@ -138,11 +142,13 @@
   {
    "fieldname": "maintenance_balance",
    "fieldtype": "Currency",
-   "label": "Maintenance Balance"
+   "label": "Maintenance Balance",
+   "read_only": 1
   },
   {
    "fieldname": "hidden_section_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Hidden Section"
   },
   {
@@ -173,11 +179,18 @@
    "fieldtype": "Table",
    "label": "Work Details",
    "options": "Work Child"
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Link",
+   "label": "Customer Name",
+   "options": "Customer",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-02-17 18:00:39.061001",
+ "modified": "2025-02-18 21:26:21.066751",
  "modified_by": "Administrator",
  "module": "ManageFarmsPro",
  "name": "Plot",

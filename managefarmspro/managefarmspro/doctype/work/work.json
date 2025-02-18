@@ -6,21 +6,25 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "work_date",
+  "column_break_axrv",
+  "total_cost",
+  "section_break_bbob",
   "plot",
+  "column_break_tpvd",
+  "work_name",
+  "section_break_pmlw",
   "monthly_maintenance_budget",
   "maintenance_balance",
   "supervision_charges",
-  "work_name",
-  "work_date",
   "customer",
   "invoice_number",
-  "column_break_hbvf",
-  "work_description",
-  "total_cost",
-  "work_photos",
   "pdf_invoice_link",
+  "column_break_hbvf",
+  "description",
+  "work_photos",
   "amended_from",
-  "work_details_section",
+  "work_details",
   "labor_required",
   "equipment_required",
   "material_required",
@@ -45,6 +49,7 @@
  ],
  "fields": [
   {
+   "bold": 1,
    "fieldname": "plot",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -74,6 +79,7 @@
    "label": "Supervision Charges (%)"
   },
   {
+   "bold": 1,
    "fieldname": "work_name",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -88,10 +94,14 @@
    "label": "Work Date"
   },
   {
+   "bold": 1,
+   "depends_on": "eval:doc.plot",
+   "fetch_from": "plot.customer_name",
    "fieldname": "customer",
    "fieldtype": "Link",
    "label": "Customer",
-   "options": "Customer"
+   "options": "Customer",
+   "read_only_depends_on": "eval:doc.plot"
   },
   {
    "fieldname": "invoice_number",
@@ -105,17 +115,15 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "work_description",
-   "fieldtype": "Small Text",
-   "label": "Work Description"
-  },
-  {
+   "bold": 1,
    "fieldname": "total_cost",
    "fieldtype": "Currency",
    "label": "Total Cost",
-   "precision": "2"
+   "precision": "2",
+   "read_only": 1
   },
   {
+   "depends_on": "eval:doc.work_name",
    "fieldname": "work_photos",
    "fieldtype": "Attach Image",
    "label": "Work Photos"
@@ -137,11 +145,6 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
-  },
-  {
-   "fieldname": "work_details_section",
-   "fieldtype": "Section Break",
-   "label": "Work Details"
   },
   {
    "fieldname": "labor_required",
@@ -179,14 +182,10 @@
    "label": "Equipment Count"
   },
   {
-   "fieldname": "material_count",
-   "fieldtype": "Data",
-   "label": "Material Count"
-  },
-  {
    "fieldname": "number_of_material_units",
    "fieldtype": "Float",
    "label": "Number of Units",
+   "non_negative": 1,
    "precision": "2"
   },
   {
@@ -197,15 +196,18 @@
    "fieldname": "number_of_labor_units",
    "fieldtype": "Float",
    "label": "Number of Units",
+   "non_negative": 1,
    "precision": "2"
   },
   {
    "fieldname": "number_of_equipment_units",
    "fieldtype": "Float",
    "label": "Number of Units",
+   "non_negative": 1,
    "precision": "2"
   },
   {
+   "fetch_from": "material_required.stock_uom",
    "fieldname": "material_unit",
    "fieldtype": "Data",
    "label": "Unit"
@@ -215,11 +217,13 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "labor_required.stock_uom",
    "fieldname": "labor_unit",
    "fieldtype": "Data",
    "label": "Unit"
   },
   {
+   "fetch_from": "equipment_required.stock_uom",
    "fieldname": "equipment_unit",
    "fieldtype": "Data",
    "label": "Unit"
@@ -253,12 +257,46 @@
    "fieldtype": "Table",
    "label": "Material",
    "options": "Material Child"
+  },
+  {
+   "depends_on": "eval:doc.work_name",
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Work Description"
+  },
+  {
+   "fieldname": "material_count",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Material Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_pmlw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_axrv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "work_details",
+   "fieldtype": "Section Break",
+   "label": "Work Details"
+  },
+  {
+   "fieldname": "section_break_bbob",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_tpvd",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-02-17 17:35:23.023331",
+ "modified": "2025-02-18 22:25:26.964046",
  "modified_by": "Administrator",
  "module": "ManageFarmsPro",
  "name": "Work",

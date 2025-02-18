@@ -27,6 +27,10 @@ app_license = "mit"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/managefarmspro/css/managefarmspro.css"
 # app_include_js = "/assets/managefarmspro/js/managefarmspro.js"
+app_include_js = [
+    "/assets/managefarmspro/js/customer_list.js",
+    "/assets/managefarmspro/js/customer_form.js"
+]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/managefarmspro/css/managefarmspro.css"
@@ -44,6 +48,12 @@ app_license = "mit"
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {
+    "Customer": [
+        "/public/js/customer_list.js",
+        "/public/js/customer_form.js"
+    ]
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -145,6 +155,12 @@ app_license = "mit"
 # 	}
 # }
 
+doc_events = {
+    "Customer": {
+        "refresh": "managefarmspro.customer_customizations.on_customer_refresh"
+    }
+}
+
 # Scheduled Tasks
 # ---------------
 
@@ -184,6 +200,11 @@ app_license = "mit"
 # override_doctype_dashboards = {
 # 	"Task": "managefarmspro.task.get_dashboard_data"
 # }
+
+override_doctype_dashboards = {
+	"Customer": "managefarmspro.overrides.customer_dashboard.get_dashboard_data"
+}
+
 
 # exempt linked doctypes from being automatically cancelled
 #

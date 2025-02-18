@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "field:cluster_name",
  "creation": "2025-02-17 15:45:13.739330",
@@ -56,7 +57,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-02-17 18:08:44.071857",
+ "modified": "2025-02-18 20:21:47.382682",
  "modified_by": "Administrator",
  "module": "ManageFarmsPro",
  "name": "Cluster",
