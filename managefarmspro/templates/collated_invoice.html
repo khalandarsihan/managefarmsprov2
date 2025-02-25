@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* General styling */
+      body {
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
+
+      .header {
+        width: 100%;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #003366;
+        padding-bottom: 10px;
+      }
+
+      .main-container {
+        padding: 20px;
+      }
+
+      .invoice-container {
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin-bottom: 20px;
+        page-break-inside: avoid;
+      }
+
+      .uniform-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+        table-layout: fixed;
+      }
+
+      .uniform-table th,
+      .uniform-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      .uniform-table th {
+        background-color: #f8f8f8;
+        text-align: left;
+        font-weight: bold;
+      }
+
+      .uniform-table tr:nth-child(even) {
+        background-color: #f9f9f9; /* Alternate row colors for better readability */
+      }
+
+      /* Define custom column widths */
+      .uniform-table .item-group {
+        width: 25%;
+      }
+
+      .uniform-table .item-name {
+        width: 35%;
+      }
+
+      .uniform-table .quantity,
+      .uniform-table .rate,
+      .uniform-table .amount {
+        width: 13%;
+        text-align: right; /* Right-align numerical values */
+      }
+
+      .invoice-info-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        table-layout: fixed;
+      }
+
+      .invoice-info-table th,
+      .invoice-info-table td {
+        border: 1px solid #003366;
+        padding: 15px;
+        vertical-align: top;
+        text-align: left;
+        word-wrap: break-word;
+        white-space: normal;
+      }
+
+      .invoice-info-table th {
+        background-color: #e0f2f1;
+        color: #003366;
+        font-weight: bold;
+        padding: 15px 10px;
+      }
+
+      .invoice-info-table td {
+        background-color: #f9f9f9;
+        padding: 15px 10px;
+      }
+
+      .invoice-info-table .billed-to {
+        width: 25%;
+      }
+
+      .invoice-info-table .payable-to {
+        width: 32%;
+      }
+
+      .invoice-info-table .invoice-period {
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .invoice-info-table .invoice-number {
+        width: 23%;
+      }
+
+      .total-section {
+        border-top: 2px solid #003366;
+        padding-top: 10px;
+        margin-top: 20px;
+        text-align: right;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .total-section .total-line {
+        margin: 5px 0;
+      }
+
+      .thank-you-section {
+        margin-top: 30px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        color: #003366;
+        border-top: 1px solid #ddd;
+        padding-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <div class="header">
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          width: 100%;
+          box-sizing: border-box;
+        "
+      >
+        <div style="flex: 1; line-height: 1.4">
+          <h2 style="margin: 0; color: #003366">
+            Philosan Farm Management LLP
+          </h2>
+          <p style="margin: 0">
+            VP 8/698A, Kolakkattu, House, Edappal, Kerala, India
+          </p>
+          <p style="margin: 0">Phone: +91 7441117052</p>
+          <p style="margin: 0">Email: shihabkv22008@gmail.com</p>
+        </div>
+        <div style="text-align: right; flex: 0 0 180px">
+          <img
+            src="/assets/managefarmspro/files/philosan-logo.png"
+            alt="Philosan Logo"
+            style="max-width: 40%; height: auto"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="main-container">
+      <!-- Invoice Info Section -->
+      <table class="invoice-info-table">
+        <tr>
+          <th class="billed-to">Billed To</th>
+          <th class="payable-to">Payable To</th>
+          <th class="invoice-period">Invoice Period</th>
+          <th class="invoice-number">Invoice Number</th>
+        </tr>
+        <tr>
+          <td class="billed-to">
+            {{ invoices[0].customer or 'N/A' }}<br />
+            {{ invoices[0].plot_name or 'N/A' }}
+          </td>
+          <td class="payable-to">
+            Philosan Farm Management LLP<br />
+            Account Number: 116705001189<br />
+            IFSC: ICIC0001167
+          </td>
+          <td class="invoice-period">
+            <span
+              >From: {{ frappe.utils.formatdate(filters.start_date) if
+              filters.start_date else '' }}</span
+            >
+            <span
+              >To: {{ frappe.utils.formatdate(filters.end_date) if
+              filters.end_date else '' }}</span
+            >
+          </td>
+          <td class="invoice-number">{{ invoice_number or 'N/A' }}</td>
+        </tr>
+      </table>
+
+      <!-- Loop through each invoice in the list and create a detailed invoice section -->
+      {% for invoice in invoices %}
+      <div class="invoice-container">
+        <h4 style="color: #003366; margin-top: 10px; margin-bottom: 5px">
+          {{ invoice.work_name }} on {{
+          frappe.utils.formatdate(invoice.work_date) if invoice.work_date else
+          '' }}
+        </h4>
+        <p style="margin: 5px 0">
+          Work Description: {{ invoice.description or 'No description available'
+          }}
+        </p>
+
+        <!-- Items Table -->
+        <table class="uniform-table">
+          <thead>
+            <tr>
+              <th class="item-group">Item Group</th>
+              <th class="item-name">Item Name</th>
+              <th class="quantity">Quantity</th>
+              <th class="rate">Rate</th>
+              <th class="amount">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in invoice.invoice_items %}
+            <tr>
+              <td class="item-group">{{ item.item_group or '' }}</td>
+              <td class="item-name">{{ item.item_name or '' }}</td>
+              <td class="quantity">{{ item.qty or '' }}</td>
+              <td class="rate">{{ item.rate or '' }}</td>
+              <td class="amount">{{ item.amount or '' }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <!-- Total Cost for Each Invoice -->
+        <p
+          style="
+            text-align: right;
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 16px;
+            background-color: #f0f8ff;
+            padding: 5px;
+          "
+        >
+          Subtotal: ₹{{ '{:.2f}'.format(invoice.total_cost or 0) }}
+        </p>
+      </div>
+      {% endfor %}
+
+      <!-- Grand Total Section -->
+      <div class="total-section">
+        <p class="total-line">
+          Total for All Works: ₹{{ '{:.2f}'.format(grand_total) }}
+        </p>
+        <p class="total-line">
+          Supervision Charges: ₹{{ '{:.2f}'.format(supervision_charges) }}
+        </p>
+        <h3 style="color: #003366">
+          Grand Total : ₹{{ '{:.2f}'.format(final_grand_total) }}
+        </h3>
+        <p style="font-style: italic">
+          Grand Total in Words: {{
+          frappe.utils.money_in_words(final_grand_total) }}
+        </p>
+      </div>
+
+      <!-- Thank You Section -->
+      <div class="thank-you-section">Thank you for your business!</div>
+    </div>
+  </body>
+</html>

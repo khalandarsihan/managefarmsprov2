@@ -114,7 +114,7 @@ def get_plot_balances(plot):
             AND docstatus = 1
             AND work_date BETWEEN %s AND %s
             """,
-			(plot_doc.supervision_charge or 0, plot, month_start, month_end),
+			(plot_doc.supervision_charges or 0, plot, month_start, month_end),
 		)[0][0]
 
 		return {

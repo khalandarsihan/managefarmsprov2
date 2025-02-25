@@ -16,13 +16,6 @@
  ],
  "fields": [
   {
-   "fieldname": "material_code",
-   "fieldtype": "Link",
-   "label": "Material Code",
-   "link_filters": "[[\"Item\",\"item_group\",\"=\",\"Raw Material\"]]",
-   "options": "Item"
-  },
-  {
    "fetch_from": "material_code.item_name",
    "fieldname": "item_display_name",
    "fieldtype": "Data",
@@ -60,12 +53,19 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Unit"
+  },
+  {
+   "fieldname": "material_code",
+   "fieldtype": "Link",
+   "label": "Material Code",
+   "link_filters": "[[\"Item\",\"item_group\",\"=\",\"Raw Material\"]]",
+   "options": "Item"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-02-17 17:33:28.082468",
+ "modified": "2025-02-20 20:12:31.380765",
  "modified_by": "Administrator",
  "module": "ManageFarmsPro",
  "name": "Material Child",
