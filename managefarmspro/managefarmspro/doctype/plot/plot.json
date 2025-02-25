@@ -62,6 +62,7 @@
    "fieldname": "plot_name",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Plot Name",
    "reqd": 1,
    "unique": 1
@@ -80,6 +81,7 @@
    "fieldname": "cluster",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Cluster",
    "options": "Cluster",
    "reqd": 1
@@ -87,6 +89,8 @@
   {
    "fieldname": "plot_location",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Plot Location",
    "options": "Plot Location"
   },
@@ -183,6 +187,8 @@
   {
    "fieldname": "customer_name",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Customer Name",
    "options": "Customer",
    "read_only": 1
@@ -190,9 +196,9 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-02-18 21:26:21.066751",
+ "modified": "2025-02-25 17:24:20.064523",
  "modified_by": "Administrator",
- "module": "ManageFarmsPro",
+ "module": "Managefarmspro",
  "name": "Plot",
  "naming_rule": "By fieldname",
  "owner": "Administrator",

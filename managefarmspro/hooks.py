@@ -29,7 +29,8 @@ app_license = "mit"
 # app_include_js = "/assets/managefarmspro/js/managefarmspro.js"
 app_include_js = [
     "/assets/managefarmspro/js/customer_list.js",
-    "/assets/managefarmspro/js/customer_form.js"
+    "/assets/managefarmspro/js/customer_form.js",
+    "/assets/managefarmspro/js/sales_invoice_form.js"
 ]
 
 # include js, css files in header of web template
@@ -48,12 +49,24 @@ app_include_js = [
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
+# doctype_js = {
+#     "Customer": [
+#         "/public/js/customer_list.js",
+#         "/public/js/customer_form.js"
+#     ]
+# }
+
 doctype_js = {
     "Customer": [
         "/public/js/customer_list.js",
         "/public/js/customer_form.js"
+    ],
+    "Sales Invoice": [
+        "/public/js/sales_invoice_form.js"  # Add this section
     ]
 }
+
+
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -201,8 +214,13 @@ doc_events = {
 # 	"Task": "managefarmspro.task.get_dashboard_data"
 # }
 
+# override_doctype_dashboards = {
+# 	"Customer": "managefarmspro.overrides.customer_dashboard.get_dashboard_data"
+# }
+
 override_doctype_dashboards = {
-	"Customer": "managefarmspro.overrides.customer_dashboard.get_dashboard_data"
+	"Customer": "managefarmspro.overrides.customer_dashboard.get_dashboard_data",
+	"Sales Invoice": "managefarmspro.overrides.sales_invoice_dashboard.get_dashboard_data"
 }
 
 
@@ -263,3 +281,11 @@ override_doctype_dashboards = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+fixtures = [
+    {
+        "dt": "Custom Field",
+        "filters": [
+            ["dt", "in", ["Customer", "Sales Invoice", "Sales Invoice Item"]]
+        ]
+    }
+]

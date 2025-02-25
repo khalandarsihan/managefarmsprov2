@@ -1,0 +1,68 @@
+{
+ "add_total_row": 0,
+ "columns": [
+     {
+      "fieldname": "plot_name",
+      "fieldtype": "Data",
+      "label": "Plot Name",
+      "width": 150
+     },
+     {
+      "fieldname": "customer_name",
+      "fieldtype": "Link",
+      "label": "Customer",
+      "options": "Customer",
+      "width": 150
+     },
+     {
+      "fieldname": "cluster",
+      "fieldtype": "Link",
+      "label": "Cluster",
+      "options": "Cluster",
+      "width": 120
+     },
+     {
+      "fieldname": "plot_status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "width": 100
+     },
+     {
+      "fieldname": "monthly_maintenance_budget",
+      "fieldtype": "Currency",
+      "label": "Monthly Budget",
+      "width": 120
+     },
+     {
+      "fieldname": "total_amount_spent",
+      "fieldtype": "Currency",
+      "label": "Amount Spent",
+      "width": 120
+     },
+     {
+      "fieldname": "maintenance_balance",
+      "fieldtype": "Currency",
+      "label": "Balance",
+      "width": 120
+     }
+    ],
+ "creation": "2025-02-25 18:38:22.998526",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letterhead": null,
+ "modified": "2025-02-25 18:38:22.998526",
+ "modified_by": "Administrator",
+ "module": "Managefarmspro",
+ "name": "Low Balance Plots",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Plot",
+ "report_name": "Low Balance Plots",
+ "report_type": "Script Report",
+ "roles": [],
+ "timeout": 0
+}

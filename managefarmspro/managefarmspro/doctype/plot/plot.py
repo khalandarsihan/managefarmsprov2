@@ -146,7 +146,7 @@ class Plot(Document):
 			try:
 				cluster_doc = frappe.get_doc("Cluster", cluster_name)
 				exists = False
-				for plot in cluster_doc.plots:
+				for plot in cluster_doc.plot_details:
 					if plot.plot == self.name:
 						plot.plot_name = self.plot_name
 						plot.plot_area = self.area
@@ -156,7 +156,7 @@ class Plot(Document):
 
 				if not exists:
 					cluster_doc.append(
-						"plots",
+						"plot_details",
 						{
 							"plot": self.name,
 							"plot_name": self.plot_name,
@@ -208,7 +208,7 @@ class Plot(Document):
 				cluster_doc = frappe.get_doc("Cluster", cluster_name)
 
 				exists = False
-				for cluster_work in cluster_doc.table_bcjd:
+				for cluster_work in cluster_doc.work_details:
 					if cluster_work.work_id == work_data.work_id:
 						# If the work entry already exists in the cluster, update it
 						cluster_work.work_name = work_data.work_name
@@ -221,7 +221,7 @@ class Plot(Document):
 				if not exists:
 					# Add a new row to the Cluster's work child table
 					cluster_doc.append(
-						"table_bcjd",
+						"work_details",
 						{
 							"work_id": work_data.work_id,
 							"work_name": work_data.work_name,

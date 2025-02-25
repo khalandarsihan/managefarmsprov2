@@ -218,6 +218,8 @@ def download_invoice_pdf(filters):
 			"rate": supervision_charges,
 			"amount": supervision_charges,
 			"income_account": supervision_charge_account,
+			"warehouse": "Main Warehouse - PFM",
+			"expense_account": "Cost of Goods Sold - PFM"
 		}
 		sales_invoice.append("items", additional_charge_item)
 
