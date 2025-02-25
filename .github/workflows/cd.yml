@@ -1,0 +1,79 @@
+name: Deploy to Staging
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+
+      - staging
+    if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'develop'
+
+  workflow_dispatch:  # Allows for manual workflow runs
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+
+    - name: Generate Version Number
+      run: |
+        version=$(date +"%Y%m%d%H%M%S")
+        echo "version=$version" >> $GITHUB_ENV
+
+    - name: Deploy to Staging Server
+      uses: appleboy/ssh-action@v0.1.5
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          # Step 1: Navigate to the directory with the Dockerfile
+          cd /home/sihan/staging/frappe_docker/images/custom
+          
+          # Step 2: Read the `apps_config.json` file and encode it to Base64
+          if [ -f "/home/sihan/staging/frappe_docker/apps_config.json" ]; then
+            export APPS_JSON_BASE64=$(cat /home/sihan/staging/frappe_docker/apps_config.json | base64 -w 0)
+          else
+            echo "Error: apps_config.json not found!"
+            exit 1
+          fi
+
+
+          # Step 3: Build the Docker image using the provided Containerfile
+          docker build --build-arg=APPS_JSON_BASE64=${APPS_JSON_BASE64} \
+            --tag=ghcr.io/${{ github.repository_owner }}/managefarmspro:${{ env.version }} \
+            --file=/home/sihan/staging/frappe_docker/images/custom/Containerfile /home/sihan/staging/frappe_docker
+
+
+          # Step 4: Login to the GitHub Container Registry **from the staging server**
+          echo "${{ secrets.MY_PAT_SECRET }}" | docker login ghcr.io -u "${{ github.repository_owner }}" --password-stdin
+
+          # Step 5: Push the built image to the registry
+          docker push ghcr.io/${{ github.repository_owner }}/managefarmspro:${{ env.version }}
+
+          # Step 6: Prune old images (Keep only the latest image)
+          docker images | grep managefarmspro | awk 'NR>1{print $3}' | xargs -r docker rmi -f
+
+          # Step 7: Set environment variables for Docker Compose
+          export CUSTOM_IMAGE="ghcr.io/${{ github.repository_owner }}/managefarmspro"
+          export CUSTOM_TAG="${{ env.version }}"
+          
+          # Store the values in the .env file to pass to docker-compose
+          echo "CUSTOM_IMAGE=${CUSTOM_IMAGE}" > /home/sihan/staging/frappe_docker/.env
+          echo "CUSTOM_TAG=${CUSTOM_TAG}" >> /home/sihan/staging/frappe_docker/.env
+
+          # Step 8: Update `pwd.yml` and redeploy using Docker Compose
+          cd /home/sihan/staging/frappe_docker
+          sed -i "s|ghcr.io/khalandarsihan/managefarmspro/frappe-app:.*|${CUSTOM_IMAGE}:${CUSTOM_TAG}|g" pwd.yml
+
+          # Step 9: Bring down the current containers, clean up, and deploy the new version
+          docker compose --env-file .env -f pwd.yml down
+          docker system prune -af
+          docker volume prune -f
+          docker compose --env-file .env -f pwd.yml pull
+          docker compose --env-file .env -f pwd.yml up -d
