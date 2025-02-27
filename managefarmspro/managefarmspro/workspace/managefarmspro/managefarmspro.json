@@ -1,0 +1,105 @@
+{
+ "charts": [
+  {
+   "chart_name": "Invoice Status",
+   "label": "Invoice Status"
+  },
+  {
+   "chart_name": "Daily Sales",
+   "label": "Work Type vs Revenue"
+  },
+  {
+   "chart_name": "Total Works",
+   "label": "Daily Works Count"
+  }
+ ],
+ "content": "[{\"id\":\"Ey9XsXzhF7\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">ManageFarmsPro</span>\",\"col\":12}},{\"id\":\"P9sSdaKkDj\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"tzRrItDVFy\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Low Balance Plots\",\"col\":3}},{\"id\":\"xeVj2hFVY5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Plot\",\"col\":3}},{\"id\":\"bmRqKvIu0o\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Item\",\"col\":3}},{\"id\":\"fSg_tCZKH3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Generate Invoice\",\"col\":3}},{\"id\":\"G1WEw5m5sw\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"JJKrcCk-aB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer\",\"col\":3}},{\"id\":\"qIS6cyqwEZ\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"PLOTS\",\"col\":3}},{\"id\":\"hkiecTK6MU\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"WORKS\",\"col\":3}},{\"id\":\"jGOiTXRFwx\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"INVOICED AMOUNT\",\"col\":3}},{\"id\":\"Qk4rIDTp4J\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"89iy9DQrPt\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Daily Works Count\",\"col\":6}},{\"id\":\"OxNBAK4L4q\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Invoice Status\",\"col\":6}},{\"id\":\"6tv71a58Tw\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"73roynWkPU\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Work Type vs Revenue\",\"col\":12}},{\"id\":\"Dq6DO3PWuk\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"2QnqxkWOLU\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Recent Works\",\"col\":6}},{\"id\":\"kLQ_IQTwi_\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Unpaid Invoices\",\"col\":6}}]",
+ "creation": "2025-02-27 17:22:15.911304",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "agriculture",
+ "idx": 1,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "ManageFarmsPro",
+ "links": [],
+ "modified": "2025-02-27 18:11:03.427728",
+ "modified_by": "Administrator",
+ "module": "Managefarmspro",
+ "name": "ManageFarmsPro",
+ "number_cards": [
+  {
+   "label": "PLOTS",
+   "number_card_name": "Count Of Plots"
+  },
+  {
+   "label": "WORKS",
+   "number_card_name": "Number of Works"
+  },
+  {
+   "label": "INVOICED AMOUNT",
+   "number_card_name": "Total Outgoing Bills"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [
+  {
+   "document_type": "Work",
+   "label": "Recent Works",
+   "quick_list_filter": "[]"
+  },
+  {
+   "document_type": "Sales Invoice",
+   "label": "Unpaid Invoices",
+   "quick_list_filter": "[[\"Sales Invoice\",\"status\",\"=\",\"Unpaid\",false]]"
+  }
+ ],
+ "roles": [],
+ "sequence_id": 2.0,
+ "shortcuts": [
+  {
+   "color": "Yellow",
+   "doc_view": "List",
+   "label": "Item",
+   "link_to": "Item",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Low Balance Plots",
+   "link_to": "Low Balance Plots",
+   "type": "Report"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "label": "Customer",
+   "link_to": "Customer",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Plot",
+   "link_to": "Plot",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Generate Invoice",
+   "link_to": "Collated Plot Invoice",
+   "type": "Report"
+  }
+ ],
+ "title": "ManageFarmsPro"
+}
