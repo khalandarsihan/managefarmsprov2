@@ -3,17 +3,27 @@
 
 from __future__ import unicode_literals
 import frappe
+import json
 from frappe import _
-from frappe.utils import getdate, add_months
+from frappe.utils import getdate, add_months, nowdate, get_first_day, get_last_day
 
 def execute(filters=None):
     if not filters:
         filters = {}
         
+    # Set default filters if not specified
+    if not filters.get("from_date"):
+        filters["from_date"] = add_months(nowdate(), -12)  # Default to last 12 months
+    if not filters.get("to_date"):
+        filters["to_date"] = nowdate()
+        
     columns = get_columns()
-    data, chart_data = get_data(filters)
+    data = get_data(filters)
     
-    return columns, data, None, chart_data
+    # Prepare chart data
+    chart = get_chart(data, filters)
+    
+    return columns, data, None, chart
 
 def get_columns():
     return [
@@ -47,53 +57,168 @@ def get_columns():
             "label": _("Average Cost"),
             "fieldtype": "Currency",
             "width": 220
+        },
+        {
+            "fieldname": "labour_cost",
+            "label": _("Labor Cost"),
+            "fieldtype": "Currency",
+            "width": 220
+        },
+        {
+            "fieldname": "material_cost",
+            "label": _("Material Cost"),
+            "fieldtype": "Currency",
+            "width": 220
+        },
+        {
+            "fieldname": "equipment_cost",
+            "label": _("Equipment Cost"),
+            "fieldtype": "Currency",
+            "width": 220
         }
     ]
 
 def get_data(filters):
     conditions = get_conditions(filters)
     
-    data = frappe.db.sql("""
+    # Get a list of all work entries that match the conditions
+    works = frappe.db.sql("""
         SELECT 
+            name,
             work_name,
-            COUNT(*) as work_count,
-            SUM(total_cost) as total_cost
+            plot,
+            total_cost,
+            work_date
         FROM 
             `tabWork`
         WHERE
             docstatus = 1
             {conditions}
-        GROUP BY 
-            work_name
         ORDER BY 
-            work_count DESC
+            work_date
     """.format(conditions=conditions), filters, as_dict=1)
     
+    # Group works by work_name
+    work_groups = {}
+    
+    for work in works:
+        work_name = work.work_name
+        if work_name not in work_groups:
+            work_groups[work_name] = {
+                "work_name": work_name,
+                "work_count": 0,
+                "total_cost": 0,
+                "labour_cost": 0,
+                "material_cost": 0,
+                "equipment_cost": 0,
+                "works": []
+            }
+        
+        # Add to the group
+        work_groups[work_name]["work_count"] += 1
+        work_groups[work_name]["total_cost"] += work.total_cost
+        work_groups[work_name]["works"].append(work.name)
+    
+    # Get cost breakdown for each work
+    for work_name, group in work_groups.items():
+        for work_id in group["works"]:
+            labour, material, equipment = get_cost_breakdown(work_id)
+            group["labour_cost"] += labour
+            group["material_cost"] += material
+            group["equipment_cost"] += equipment
+    
+    # Convert to list
+    result = list(work_groups.values())
+    
     # Calculate totals for percentage
-    total_works = sum([d.work_count for d in data])
+    total_works = sum([d["work_count"] for d in result])
     
-    # Calculate percentages and averages
-    for d in data:
-        d.percentage = (d.work_count / total_works * 100) if total_works else 0
-        d.avg_cost = d.total_cost / d.work_count if d.work_count else 0
+    # Calculate percentages and averages, remove the works list
+    for d in result:
+        d["percentage"] = (d["work_count"] / total_works * 100) if total_works else 0
+        d["avg_cost"] = d["total_cost"] / d["work_count"] if d["work_count"] else 0
+        
+        # Round to 2 decimal places
+        d["percentage"] = round(d["percentage"], 2)
+        d["avg_cost"] = round(d["avg_cost"], 2)
+        
+        # Remove the works list 
+        d.pop("works", None)
     
-    # Prepare chart data
+    # Sort by work count (descending)
+    result.sort(key=lambda x: x["work_count"], reverse=True)
+    
+    # Apply minimum count filter if present
+    if filters.get("min_count"):
+        min_count = filters.get("min_count")
+        result = [d for d in result if d["work_count"] >= min_count]
+    
+    return result
+
+def get_cost_breakdown(work_name):
+    """Get the cost breakdown for a specific work"""
+    labor_cost = frappe.db.sql("""
+        SELECT COALESCE(SUM(total_price), 0) as cost
+        FROM `tabLabor Child`
+        WHERE parent = %s
+    """, work_name, as_dict=1)[0].cost
+    
+    material_cost = frappe.db.sql("""
+        SELECT COALESCE(SUM(total_price), 0) as cost
+        FROM `tabMaterial Child`
+        WHERE parent = %s
+    """, work_name, as_dict=1)[0].cost
+    
+    equipment_cost = frappe.db.sql("""
+        SELECT COALESCE(SUM(total_price), 0) as cost
+        FROM `tabEquipment Child`
+        WHERE parent = %s
+    """, work_name, as_dict=1)[0].cost
+    
+    return labor_cost, material_cost, equipment_cost
+
+def get_chart(data, filters):
+    """Generate chart data for the report"""
+    if not data:
+        return None
+    
+    # Get chart type from filters
+    chart_type = filters.get("chart_type", "Pie").lower()
+    if chart_type == "percentage":
+        chart_type = "pie"  # Handle percentage as pie
+    
+    labels = []
+    values = []
+    colors = [
+        '#FF5733', '#33FF57', '#3357FF', '#F3FF33',
+        '#FF33F3', '#33FFF3', '#FF8033', '#8033FF',
+        '#5733FF', '#33FFF3', '#FFAF33', '#33FFAF'
+    ]
+    
+    # Sort data by count (descending)
+    sorted_data = sorted(data, key=lambda x: x["work_count"], reverse=True)
+    
+    # Get top 10 if there are more than 10 activities
+    chart_data = sorted_data[:10] if len(sorted_data) > 10 else sorted_data
+    
+    for entry in chart_data:
+        labels.append(entry["work_name"])
+        values.append(entry["work_count"])
+    
+    # Basic chart configuration
     chart = {
-        "type": "pie",
         "data": {
-            "labels": [d.work_name for d in data],
+            "labels": labels,
             "datasets": [
-                {"values": [d.work_count for d in data]}
+                {"name": "Count", "values": values}
             ]
         },
-        "colors": [
-            '#FF5733', '#33FF57', '#3357FF', '#F3FF33',
-            '#FF33F3', '#33FFF3', '#FF8033', '#8033FF'
-        ][:len(data)],
+        "type": chart_type,
+        "colors": colors[:len(chart_data)],
         "height": 300
     }
     
-    return data, chart
+    return chart
 
 def get_conditions(filters):
     conditions = []
@@ -107,5 +232,17 @@ def get_conditions(filters):
     
     if filters.get("plot"):
         conditions.append(" AND plot = %(plot)s")
+        
+    if filters.get("customer"):
+        conditions.append(" AND customer = %(customer)s")
     
     return " ".join(conditions)
+
+@frappe.whitelist()
+def get_chart_data(filters):
+    """API endpoint to get chart data for the dashboard"""
+    if isinstance(filters, str):
+        filters = json.loads(filters)
+    
+    data = get_data(filters)
+    return get_chart(data, filters)
