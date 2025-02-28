@@ -1,0 +1,13 @@
+{
+ "creation": "2025-02-27 19:38:37.074464",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart Source",
+ "idx": 0,
+ "modified": "2025-02-27 19:38:37.074464",
+ "modified_by": "Administrator",
+ "module": "Managefarmspro",
+ "name": "Work Activity Distribution",
+ "owner": "Administrator",
+ "source_name": "Work Activity Distribution",
+ "timeseries": 0
+}
