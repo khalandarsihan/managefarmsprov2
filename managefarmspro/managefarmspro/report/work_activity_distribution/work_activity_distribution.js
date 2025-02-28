@@ -175,15 +175,15 @@ frappe.query_reports["Work Activity Distribution"] = {
     // Hide the Actions button
     setTimeout(function () {
       // Try multiple selectors to catch the Actions button
-      $(".actions-btn-group").hide();
-      $('.btn-group:contains("Actions")').hide();
-      $('button:contains("Actions")').hide();
-      $('.page-actions button:contains("Actions")').hide();
-      $('.standard-actions button:contains("Actions")').hide();
-      $('.custom-actions button:contains("Actions")').hide();
+      // $(".actions-btn-group").hide();
+      // $('.btn-group:contains("Actions")').hide();
+      // $('button:contains("Actions")').hide();
+      // $('.page-actions button:contains("Actions")').hide();
+      // $('.standard-actions button:contains("Actions")').hide();
+      // $('.custom-actions button:contains("Actions")').hide();
 
-      // If there's a div with class containing 'actions'
-      $('div[class*="actions"]:contains("Actions")').hide();
+      // // If there's a div with class containing 'actions'
+      // $('div[class*="actions"]:contains("Actions")').hide();
 
       // Remove it from DOM if hiding doesn't work
       $('.page-actions button:contains("Actions")').remove();
