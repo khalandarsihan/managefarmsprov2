@@ -280,11 +280,51 @@ override_doctype_dashboards = {
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
+# fixtures = [
+#     {
+#         "dt": "Custom Field",
+#         "filters": [
+#             ["dt", "in", ["Customer", "Sales Invoice", "Sales Invoice Item"]]
+#         ]
+#     }
+# ]
+
 fixtures = [
+    # Your existing custom field fixtures
     {
         "dt": "Custom Field",
         "filters": [
             ["dt", "in", ["Customer", "Sales Invoice", "Sales Invoice Item"]]
         ]
+    },
+    # Add your custom workspace
+    {
+        "dt": "Workspace",
+        "filters": [
+            ["name", "=", "ManageFarmsPro"]  # Your custom workspace
+        ]
+    },
+    # Dashboard fixtures
+    {
+        "dt": "Dashboard",
+        "filters": [
+            ["module", "=", "ManageFarmsPro"]
+        ]
+    },
+    {
+        "dt": "Dashboard Chart",
+        "filters": [
+            ["module", "=", "ManageFarmsPro"]
+        ]
+    },
+    {
+        "dt": "Number Card",
+        "filters": [
+            ["module", "=", "ManageFarmsPro"]
+        ]
     }
 ]
+
+# Add this section to your hooks.py
+# This will run after your app is installed
+after_install = "managefarmspro.setup.install.after_install"

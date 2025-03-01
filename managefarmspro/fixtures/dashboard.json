@@ -1,0 +1,72 @@
+[
+ {
+  "cards": [
+   {
+    "card": "c1",
+    "parent": "managefarms",
+    "parentfield": "cards",
+    "parenttype": "Dashboard"
+   }
+  ],
+  "chart_options": null,
+  "charts": [
+   {
+    "chart": "plot 3",
+    "parent": "managefarms",
+    "parentfield": "charts",
+    "parenttype": "Dashboard",
+    "width": "Half"
+   },
+   {
+    "chart": "second chart",
+    "parent": "managefarms",
+    "parentfield": "charts",
+    "parenttype": "Dashboard",
+    "width": "Half"
+   },
+   {
+    "chart": "Plots",
+    "parent": "managefarms",
+    "parentfield": "charts",
+    "parenttype": "Dashboard",
+    "width": "Half"
+   },
+   {
+    "chart": "second chart",
+    "parent": "managefarms",
+    "parentfield": "charts",
+    "parenttype": "Dashboard",
+    "width": "Half"
+   },
+   {
+    "chart": "third chart",
+    "parent": "managefarms",
+    "parentfield": "charts",
+    "parenttype": "Dashboard",
+    "width": "Half"
+   },
+   {
+    "chart": "Pl-A",
+    "parent": "managefarms",
+    "parentfield": "charts",
+    "parenttype": "Dashboard",
+    "width": "Half"
+   },
+   {
+    "chart": "Total Invoices Raised",
+    "parent": "managefarms",
+    "parentfield": "charts",
+    "parenttype": "Dashboard",
+    "width": "Half"
+   }
+  ],
+  "dashboard_name": "managefarms",
+  "docstatus": 0,
+  "doctype": "Dashboard",
+  "is_default": 0,
+  "is_standard": 0,
+  "modified": "2024-10-07 17:54:00.384814",
+  "module": "Managefarmspro",
+  "name": "managefarms"
+ }
+]
