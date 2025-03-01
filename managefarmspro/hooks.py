@@ -290,37 +290,42 @@ override_doctype_dashboards = {
 # ]
 
 fixtures = [
-    # Your existing custom field fixtures
+    # Your existing fixtures
     {
         "dt": "Custom Field",
         "filters": [
             ["dt", "in", ["Customer", "Sales Invoice", "Sales Invoice Item"]]
         ]
     },
-    # Add your custom workspace
+    # Update workspace filter
     {
         "dt": "Workspace",
         "filters": [
-            ["name", "=", "ManageFarmsPro"]  # Your custom workspace
+            ["name", "=", "ManageFarmsPro"]
         ]
     },
-    # Dashboard fixtures
+    # Update dashboard filter
     {
         "dt": "Dashboard",
         "filters": [
-            ["module", "=", "ManageFarmsPro"]
+            ["module", "=", "ManageFarmsPro"],
+            ["is_standard", "=", 0]  # Only non-standard dashboards
         ]
     },
+    # Update dashboard chart filter
     {
         "dt": "Dashboard Chart",
         "filters": [
-            ["module", "=", "ManageFarmsPro"]
+            ["module", "=", "ManageFarmsPro"],
+            ["is_standard", "=", 0]  # Only non-standard charts
         ]
     },
+    # Update number card filter
     {
         "dt": "Number Card",
         "filters": [
-            ["module", "=", "ManageFarmsPro"]
+            ["module", "=", "ManageFarmsPro"],
+            ["is_standard", "=", 0]  # Only non-standard cards
         ]
     }
 ]
