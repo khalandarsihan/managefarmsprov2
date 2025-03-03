@@ -1,72 +1,51 @@
 [
  {
-  "cards": [
-   {
-    "card": "c1",
-    "parent": "managefarms",
-    "parentfield": "cards",
-    "parenttype": "Dashboard"
-   }
-  ],
+  "cards": [],
   "chart_options": null,
   "charts": [
    {
-    "chart": "plot 3",
-    "parent": "managefarms",
+    "chart": "Plot Budget Comparison",
+    "parent": "ManageFarmsPro",
     "parentfield": "charts",
     "parenttype": "Dashboard",
     "width": "Half"
    },
    {
-    "chart": "second chart",
-    "parent": "managefarms",
+    "chart": "Monthly Work Cost Trend",
+    "parent": "ManageFarmsPro",
     "parentfield": "charts",
     "parenttype": "Dashboard",
     "width": "Half"
    },
    {
-    "chart": "Plots",
-    "parent": "managefarms",
+    "chart": "Work Activity Distribution",
+    "parent": "ManageFarmsPro",
     "parentfield": "charts",
     "parenttype": "Dashboard",
     "width": "Half"
    },
    {
-    "chart": "second chart",
-    "parent": "managefarms",
+    "chart": "Resource Utilization Breakdown",
+    "parent": "ManageFarmsPro",
     "parentfield": "charts",
     "parenttype": "Dashboard",
     "width": "Half"
    },
    {
-    "chart": "third chart",
-    "parent": "managefarms",
-    "parentfield": "charts",
-    "parenttype": "Dashboard",
-    "width": "Half"
-   },
-   {
-    "chart": "Pl-A",
-    "parent": "managefarms",
-    "parentfield": "charts",
-    "parenttype": "Dashboard",
-    "width": "Half"
-   },
-   {
-    "chart": "Total Invoices Raised",
-    "parent": "managefarms",
+    "chart": "Maintenance Balance Status",
+    "parent": "ManageFarmsPro",
     "parentfield": "charts",
     "parenttype": "Dashboard",
     "width": "Half"
    }
   ],
-  "dashboard_name": "managefarms",
+  "dashboard_name": "ManageFarmsPro",
   "docstatus": 0,
   "doctype": "Dashboard",
-  "is_default": 0,
-  "is_standard": 0,
-  "modified": "2024-10-07 17:54:00.384814",
+  "is_default": 1,
+  "is_standard": 1,
+  "modified": "2025-03-03 14:38:56.599774",
   "module": "Managefarmspro",
-  "name": "managefarms"
+  "name": "ManageFarmsPro"
  }
 ]

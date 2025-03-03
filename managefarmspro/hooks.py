@@ -309,7 +309,7 @@ fixtures = [
         "dt": "Dashboard",
         "filters": [
             ["module", "=", "ManageFarmsPro"],
-            ["is_standard", "=", 0]  # Only non-standard dashboards
+            ["is_standard", "=", 1]  # Only non-standard dashboards
         ]
     },
     # Update dashboard chart filter
@@ -317,7 +317,7 @@ fixtures = [
         "dt": "Dashboard Chart",
         "filters": [
             ["module", "=", "ManageFarmsPro"],
-            ["is_standard", "=", 0]  # Only non-standard charts
+            ["is_standard", "=", 1]  # Only non-standard charts
         ]
     },
     # Update number card filter
@@ -325,7 +325,7 @@ fixtures = [
         "dt": "Number Card",
         "filters": [
             ["module", "=", "ManageFarmsPro"],
-            ["is_standard", "=", 0]  # Only non-standard cards
+            ["is_standard", "=", 1]  # Only non-standard cards
         ]
     }
 ]
