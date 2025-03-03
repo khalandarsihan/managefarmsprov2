@@ -1,0 +1,57 @@
+[
+ {
+  "chart": "Plot Budget Comparison",
+  "docstatus": 0,
+  "doctype": "Dashboard Chart Link",
+  "modified": "2025-03-03 14:38:56.599774",
+  "name": "0iu21gl7nr",
+  "parent": "ManageFarmsPro",
+  "parentfield": "charts",
+  "parenttype": "Dashboard",
+  "width": "Half"
+ },
+ {
+  "chart": "Monthly Work Cost Trend",
+  "docstatus": 0,
+  "doctype": "Dashboard Chart Link",
+  "modified": "2025-03-03 14:38:56.599774",
+  "name": "k9764mtcma",
+  "parent": "ManageFarmsPro",
+  "parentfield": "charts",
+  "parenttype": "Dashboard",
+  "width": "Half"
+ },
+ {
+  "chart": "Work Activity Distribution",
+  "docstatus": 0,
+  "doctype": "Dashboard Chart Link",
+  "modified": "2025-03-03 14:38:56.599774",
+  "name": "a9vk0d29uj",
+  "parent": "ManageFarmsPro",
+  "parentfield": "charts",
+  "parenttype": "Dashboard",
+  "width": "Half"
+ },
+ {
+  "chart": "Resource Utilization Breakdown",
+  "docstatus": 0,
+  "doctype": "Dashboard Chart Link",
+  "modified": "2025-03-03 14:38:56.599774",
+  "name": "u92jmg70td",
+  "parent": "ManageFarmsPro",
+  "parentfield": "charts",
+  "parenttype": "Dashboard",
+  "width": "Half"
+ },
+ {
+  "chart": "Maintenance Balance Status",
+  "docstatus": 0,
+  "doctype": "Dashboard Chart Link",
+  "modified": "2025-03-03 14:38:56.599774",
+  "name": "c1u1bcorb6",
+  "parent": "ManageFarmsPro",
+  "parentfield": "charts",
+  "parenttype": "Dashboard",
+  "width": "Half"
+ }
+]

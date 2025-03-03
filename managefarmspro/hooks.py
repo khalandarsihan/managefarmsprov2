@@ -289,43 +289,94 @@ override_doctype_dashboards = {
 #     }
 # ]
 
+# fixtures = [
+#     # Your existing fixtures
+#     {
+#         "dt": "Custom Field",
+#         "filters": [
+#             ["dt", "in", ["Customer", "Sales Invoice", "Sales Invoice Item"]]
+#         ]
+#     },
+#     # Update workspace filter
+#     {
+#         "dt": "Workspace",
+#         "filters": [
+#             ["name", "=", "ManageFarmsPro"]
+#         ]
+#     },
+#     # Update dashboard filter
+#     {
+#         "dt": "Dashboard",
+#         "filters": [
+#             ["module", "=", "ManageFarmsPro"],
+#             ["is_standard", "=", 1]  # Only non-standard dashboards
+#         ]
+#     },
+#     # Update dashboard chart filter
+#     {
+#         "dt": "Dashboard Chart",
+#         "filters": [
+#             ["module", "=", "ManageFarmsPro"],
+#             ["is_standard", "=", 1]  # Only non-standard charts
+#         ]
+#     },
+#     # Update number card filter
+#     {
+#         "dt": "Number Card",
+#         "filters": [
+#             ["module", "=", "ManageFarmsPro"],
+#             ["is_standard", "=", 1]  # Only non-standard cards
+#         ]
+#     }
+# ]
+
 fixtures = [
-    # Your existing fixtures
+    # Core fixtures for custom fields
     {
         "dt": "Custom Field",
         "filters": [
             ["dt", "in", ["Customer", "Sales Invoice", "Sales Invoice Item"]]
         ]
     },
-    # Update workspace filter
+    # Make sure to include ALL workspace components
     {
         "dt": "Workspace",
         "filters": [
             ["name", "=", "ManageFarmsPro"]
         ]
     },
-    # Update dashboard filter
+    # Dashboard
     {
         "dt": "Dashboard",
         "filters": [
-            ["module", "=", "ManageFarmsPro"],
-            ["is_standard", "=", 1]  # Only non-standard dashboards
+            ["name", "=", "ManageFarmsPro"]  # Change to filter by name instead of module
         ]
     },
-    # Update dashboard chart filter
+    # Dashboard charts - ensure we get all of them
     {
         "dt": "Dashboard Chart",
         "filters": [
-            ["module", "=", "ManageFarmsPro"],
-            ["is_standard", "=", 1]  # Only non-standard charts
+            ["module", "=", "Managefarmspro"]
         ]
     },
-    # Update number card filter
+    # Number cards
     {
         "dt": "Number Card",
         "filters": [
-            ["module", "=", "ManageFarmsPro"],
-            ["is_standard", "=", 1]  # Only non-standard cards
+            ["module", "=", "Managefarmspro"]
+        ]
+    },
+    # Include links between these components
+    {
+        "dt": "Dashboard Chart Link",
+        "filters": [
+            ["parent", "=", "ManageFarmsPro"]
+        ]
+    },
+    {
+        "dt": "Number Card Link",
+        "filters": [
+            ["parent", "=", "ManageFarmsPro"]
         ]
     }
 ]
