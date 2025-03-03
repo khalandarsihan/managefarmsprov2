@@ -280,14 +280,14 @@ override_doctype_dashboards = {
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
-# fixtures = [
-#     {
-#         "dt": "Custom Field",
-#         "filters": [
-#             ["dt", "in", ["Customer", "Sales Invoice", "Sales Invoice Item"]]
-#         ]
-#     }
-# ]
+fixtures = [
+    {
+        "dt": "Custom Field",
+        "filters": [
+            ["dt", "in", ["Customer", "Sales Invoice", "Sales Invoice Item"]]
+        ]
+    }
+]
 
 # fixtures = [
 #     # Your existing fixtures
@@ -330,53 +330,53 @@ override_doctype_dashboards = {
 #     }
 # ]
 
-fixtures = [
-    # Core fixtures for custom fields
-    {
-        "dt": "Custom Field",
-        "filters": [
-            ["dt", "in", ["Customer", "Sales Invoice", "Sales Invoice Item"]]
-        ]
-    },
-    # Make sure to include ALL workspace components
-    {
-        "dt": "Workspace",
-        "filters": [
-            ["name", "=", "ManageFarmsPro"]
-        ]
-    },
-    # Dashboard
-    {
-        "dt": "Dashboard",
-        "filters": [
-            ["name", "=", "ManageFarmsPro"]  # Change to filter by name instead of module
-        ]
-    },
-    # Dashboard charts - ensure we get all of them
-    {
-        "dt": "Dashboard Chart",
-        "filters": [
-            ["module", "=", "Managefarmspro"]
-        ]
-    },
-    # Number cards
-    {
-        "dt": "Number Card",
-        "filters": [
-            ["module", "=", "Managefarmspro"]
-        ]
-    },
-    # Include links between these components
-    {
-        "dt": "Dashboard Chart Link",
-        "filters": [
-            ["parent", "=", "ManageFarmsPro"]
-        ]
-    },
-    {
-        "dt": "Number Card Link",
-        "filters": [
-            ["parent", "=", "ManageFarmsPro"]
-        ]
-    }
-]
+# fixtures = [
+#     # Core fixtures for custom fields
+#     {
+#         "dt": "Custom Field",
+#         "filters": [
+#             ["dt", "in", ["Customer", "Sales Invoice", "Sales Invoice Item"]]
+#         ]
+#     },
+#     # Make sure to include ALL workspace components
+#     {
+#         "dt": "Workspace",
+#         "filters": [
+#             ["name", "=", "ManageFarmsPro"]
+#         ]
+#     },
+#     # Dashboard
+#     {
+#         "dt": "Dashboard",
+#         "filters": [
+#             ["name", "=", "ManageFarmsPro"]  # Change to filter by name instead of module
+#         ]
+#     },
+#     # Dashboard charts - ensure we get all of them
+#     {
+#         "dt": "Dashboard Chart",
+#         "filters": [
+#             ["module", "=", "Managefarmspro"]
+#         ]
+#     },
+#     # Number cards
+#     {
+#         "dt": "Number Card",
+#         "filters": [
+#             ["module", "=", "Managefarmspro"]
+#         ]
+#     },
+#     # Include links between these components
+#     {
+#         "dt": "Dashboard Chart Link",
+#         "filters": [
+#             ["parent", "=", "ManageFarmsPro"]
+#         ]
+#     },
+#     {
+#         "dt": "Number Card Link",
+#         "filters": [
+#             ["parent", "=", "ManageFarmsPro"]
+#         ]
+#     }
+# ]

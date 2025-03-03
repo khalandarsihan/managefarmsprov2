@@ -26,13 +26,13 @@
  "is_hidden": 0,
  "label": "ManageFarmsPro",
  "links": [],
- "modified": "2025-02-28 20:41:53.520582",
+ "modified": "2025-03-03 16:12:33.683823",
  "modified_by": "Administrator",
  "module": "Managefarmspro",
  "name": "ManageFarmsPro",
  "number_cards": [
   {
-   "label": "Customer",
+   "label": "CUSTOMER",
    "number_card_name": "Active Customers"
   },
   {
