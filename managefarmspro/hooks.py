@@ -329,7 +329,3 @@ fixtures = [
         ]
     }
 ]
-
-# Add this section to your hooks.py
-# This will run after your app is installed
-after_install = "managefarmspro.setup.install.after_install"
